@@ -1,0 +1,2597 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap"
+	xmlns:impl="http://xmlns.oracle.com/oxp/service/v2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:intf="http://xmlns.oracle.com/oxp/service/v2" targetNamespace="http://xmlns.oracle.com/oxp/service/v2">
+	<!--SDL created by Apache Axis version: 1.4 Built on Apr 22, 2006 (06:55:48 
+		PDT) -->
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://xmlns.oracle.com/oxp/service/v2"
+			elementFormDefault="qualified">
+			<element name="getTemplate">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateID" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateResponse">
+				<complexType>
+					<sequence>
+						<element name="getTemplateReturn" type="xsd:base64Binary" />
+					</sequence>
+				</complexType>
+			</element>
+			<complexType name="AccessDeniedException">
+				<sequence />
+			</complexType>
+			<element name="fault" type="impl:AccessDeniedException" />
+			<complexType name="OperationFailedException">
+				<sequence />
+			</complexType>
+			<element name="fault1" type="impl:OperationFailedException" />
+			<complexType name="InvalidParametersException">
+				<sequence />
+			</complexType>
+			<element name="fault2" type="impl:InvalidParametersException" />
+			<element name="createReport">
+				<complexType>
+					<sequence>
+						<element name="reportName" type="xsd:string" />
+						<element name="folderAbsolutePathURL" type="xsd:string" />
+						<element name="dataModelURL" type="xsd:string" />
+						<element name="templateFileName" type="xsd:string" />
+						<element name="templateData" type="xsd:base64Binary" />
+						<element name="XLIFFFileName" type="xsd:string" />
+						<element name="XLIFFData" type="xsd:base64Binary" />
+						<element name="updateFlag" type="xsd:boolean" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="createReportResponse">
+				<complexType>
+					<sequence>
+						<element name="createReportReturn" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportDefinitionInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportDefinitionInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getReportDefinitionInSessionReturn" type="impl:ReportDefinition" />
+					</sequence>
+				</complexType>
+			</element>
+			<complexType name="TemplateFormatLabelValue">
+				<sequence>
+					<element name="templateFormatLabel" nillable="true" type="xsd:string" />
+					<element name="templateFormatValue" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfTemplateFormatLabelValue">
+				<sequence>
+					<element name="item" type="impl:TemplateFormatLabelValue"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfString">
+				<sequence>
+					<element name="item" type="xsd:string" minOccurs="0"
+						maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<complexType name="TemplateFormatsLabelValues">
+				<sequence>
+					<element name="active" type="xsd:boolean" />
+					<element name="applyStyleTemplate" type="xsd:boolean" />
+					<element name="default" type="xsd:boolean" />
+					<element name="listOfTemplateFormatLabelValue" nillable="true"
+						type="impl:ArrayOfTemplateFormatLabelValue" />
+					<element name="templateAvailableLocales" nillable="true"
+						type="impl:ArrayOfString" />
+					<element name="templateBaseLocale" nillable="true" type="xsd:string" />
+					<element name="templateDefaultLocale" nillable="true" type="xsd:string" />
+					<element name="templateID" nillable="true" type="xsd:string" />
+					<element name="templateType" nillable="true" type="xsd:string" />
+					<element name="templateURL" nillable="true" type="xsd:string" />
+					<element name="viewOnline" type="xsd:boolean" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfTemplateFormatsLabelValues">
+				<sequence>
+					<element name="item" type="impl:TemplateFormatsLabelValues"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<complexType name="ParamNameValue">
+				<sequence>
+					<element name="UIType" nillable="true" type="xsd:string" />
+					<element name="dataType" nillable="true" type="xsd:string" />
+					<element name="dateFormatString" nillable="true" type="xsd:string" />
+					<element name="dateFrom" nillable="true" type="xsd:string" />
+					<element name="dateTo" nillable="true" type="xsd:string" />
+					<element name="defaultValue" nillable="true" type="xsd:string" />
+					<element name="fieldSize" nillable="true" type="xsd:string" />
+					<element name="label" nillable="true" type="xsd:string" />
+					<element name="lovLabels" nillable="true" type="impl:ArrayOfString" />
+					<element name="multiValuesAllowed" type="xsd:boolean" />
+					<element name="name" nillable="true" type="xsd:string" />
+					<element name="refreshParamOnChange" type="xsd:boolean" />
+					<element name="selectAll" type="xsd:boolean" />
+					<element name="templateParam" type="xsd:boolean" />
+					<element name="useNullForAll" type="xsd:boolean" />
+					<element name="values" nillable="true" type="impl:ArrayOfString" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfParamNameValue">
+				<sequence>
+					<element name="item" type="impl:ParamNameValue" minOccurs="0"
+						maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<complexType name="ReportDefinition">
+				<sequence>
+					<element name="ESSJobName" nillable="true" type="xsd:string" />
+					<element name="ESSPackageName" nillable="true" type="xsd:string" />
+					<element name="autoRun" type="xsd:boolean" />
+					<element name="cacheDocument" type="xsd:boolean" />
+					<element name="controledByExtApp" type="xsd:boolean" />
+					<element name="dataModelURL" nillable="true" type="xsd:string" />
+					<element name="defaultOutputFormat" nillable="true" type="xsd:string" />
+					<element name="defaultTemplateId" nillable="true" type="xsd:string" />
+					<element name="diagnostics" type="xsd:boolean" />
+					<element name="listOfTemplateFormatsLabelValues" nillable="true"
+						type="impl:ArrayOfTemplateFormatsLabelValues" />
+					<element name="onLine" type="xsd:boolean" />
+					<element name="openLinkInNewWindow" type="xsd:boolean" />
+					<element name="parameterColumns" type="xsd:int" />
+					<element name="parameterNames" nillable="true"
+						type="impl:ArrayOfString" />
+					<element name="reportDefnTitle" nillable="true" type="xsd:string" />
+					<element name="reportDescription" nillable="true" type="xsd:string" />
+					<element name="reportName" nillable="true" type="xsd:string" />
+					<element name="reportParameterNameValues" nillable="true"
+						type="impl:ArrayOfParamNameValue" />
+					<element name="reportType" nillable="true" type="xsd:string" />
+					<element name="showControls" type="xsd:boolean" />
+					<element name="showReportLinks" type="xsd:boolean" />
+					<element name="templateIds" nillable="true" type="impl:ArrayOfString" />
+				</sequence>
+			</complexType>
+			<element name="updateReportDefinitionInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsPath" type="xsd:string" />
+						<element name="newReportDefn" type="impl:ReportDefinition" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateReportDefinitionInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="updateReportDefinitionInSessionReturn"
+							type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateTemplateForReportInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateName" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="templateData" type="xsd:base64Binary" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateTemplateForReportInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="updateTemplateForReportInSessionReturn"
+							type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportParameters">
+				<complexType>
+					<sequence>
+						<element name="reportRequest" type="impl:ReportRequest" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<complexType name="MetaData">
+				<sequence>
+					<element name="metaDataName" nillable="true" type="xsd:string" />
+					<element name="metaDataValue" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfMetaData">
+				<sequence>
+					<element name="item" type="impl:MetaData" minOccurs="0"
+						maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<complexType name="MetaDataList">
+				<sequence>
+					<element name="metaDataList" nillable="true"
+						type="impl:ArrayOfMetaData" />
+				</sequence>
+			</complexType>
+			<complexType name="JDBCDataSource">
+				<sequence>
+					<element name="JDBCDriverClass" nillable="true" type="xsd:string" />
+					<element name="JDBCDriverType" nillable="true" type="xsd:string" />
+					<element name="JDBCPassword" nillable="true" type="xsd:string" />
+					<element name="JDBCURL" nillable="true" type="xsd:string" />
+					<element name="JDBCUserName" nillable="true" type="xsd:string" />
+					<element name="dataSourceName" nillable="true" type="xsd:string" />
+					<element name="postProcessFunc" nillable="true" type="xsd:string" />
+					<element name="preProcessFunc" nillable="true" type="xsd:string" />
+					<element name="useProxyAuth" type="xsd:boolean" />
+				</sequence>
+			</complexType>
+			<complexType name="FileDataSource">
+				<sequence>
+					<element name="dynamicDataSourcePath" nillable="true" type="xsd:string" />
+					<element name="temporaryDataSource" type="xsd:boolean" />
+				</sequence>
+			</complexType>
+			<complexType name="BIPDataSource">
+				<sequence>
+					<element name="JDBCDataSource" nillable="true"
+						type="impl:JDBCDataSource" />
+					<element name="fileDataSource" nillable="true"
+						type="impl:FileDataSource" />
+				</sequence>
+			</complexType>
+			<complexType name="ParamNameValues">
+				<sequence>
+					<element name="listOfParamNameValues" nillable="true"
+						type="impl:ArrayOfParamNameValue" />
+				</sequence>
+			</complexType>
+			<complexType name="ReportRequest">
+				<sequence>
+					<element name="XDOPropertyList" nillable="true"
+						type="impl:MetaDataList" />
+					<element name="attributeCalendar" nillable="true" type="xsd:string" />
+					<element name="attributeFormat" nillable="true" type="xsd:string" />
+					<element name="attributeLocale" nillable="true" type="xsd:string" />
+					<element name="attributeTemplate" nillable="true" type="xsd:string" />
+					<element name="attributeTimezone" nillable="true" type="xsd:string" />
+					<element name="attributeUILocale" nillable="true" type="xsd:string" />
+					<element name="byPassCache" type="xsd:boolean" />
+					<element name="dynamicDataSource" nillable="true"
+						type="impl:BIPDataSource" />
+					<element name="flattenXML" type="xsd:boolean" />
+					<element name="parameterNameValues" nillable="true"
+						type="impl:ParamNameValues" />
+					<element name="reportAbsolutePath" nillable="true" type="xsd:string" />
+					<element name="reportData" nillable="true" type="xsd:base64Binary" />
+					<element name="reportOutputPath" nillable="true" type="xsd:string" />
+					<element name="reportRawData" nillable="true" type="xsd:string" />
+					<element name="sizeOfDataChunkDownload" type="xsd:int" />
+				</sequence>
+			</complexType>
+			<element name="getReportParametersResponse">
+				<complexType>
+					<sequence>
+						<element name="getReportParametersReturn" type="impl:ParamNameValues" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="runReport">
+				<complexType>
+					<sequence>
+						<element name="reportRequest" type="impl:ReportRequest" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="runReportResponse">
+				<complexType>
+					<sequence>
+						<element name="runReportReturn" type="impl:ReportResponse" />
+					</sequence>
+				</complexType>
+			</element>
+			<complexType name="ReportResponse">
+				<sequence>
+					<element name="metaDataList" nillable="true" type="impl:MetaDataList" />
+					<element name="reportBytes" nillable="true" type="xsd:base64Binary" />
+					<element name="reportContentType" nillable="true" type="xsd:string" />
+					<element name="reportFileID" nillable="true" type="xsd:string" />
+					<element name="reportLocale" nillable="true" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<element name="getTemplateAvailableLocales">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateID" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateAvailableLocalesResponse">
+				<complexType>
+					<sequence>
+						<element name="getTemplateAvailableLocalesReturn" type="xsd:string"
+							maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="runReportInSession">
+				<complexType>
+					<sequence>
+						<element name="reportRequest" type="impl:ReportRequest" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="runReportInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="runReportInSessionReturn" type="impl:ReportResponse" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="runDataModel">
+				<complexType>
+					<sequence>
+						<element name="reportRequest" type="impl:ReportRequest" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="runDataModelResponse">
+				<complexType>
+					<sequence>
+						<element name="runDataModelReturn" type="impl:ReportResponse" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="runDataModelInSession">
+				<complexType>
+					<sequence>
+						<element name="reportRequest" type="impl:ReportRequest" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="runDataModelInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="runDataModelInSessionReturn" type="impl:ReportResponse" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportDefinition">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportDefinitionResponse">
+				<complexType>
+					<sequence>
+						<element name="getReportDefinitionReturn" type="impl:ReportDefinition" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getMobileAppDefinition">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getMobileAppDefinitionResponse">
+				<complexType>
+					<sequence>
+						<element name="getMobileAppDefinitionReturn" type="impl:MobileAppDefinition" />
+					</sequence>
+				</complexType>
+			</element>
+			<complexType name="MobileTemplateFormatsLabelValues">
+				<sequence>
+					<element name="active" type="xsd:boolean" />
+					<element name="applyStyleTemplate" type="xsd:boolean" />
+					<element name="default" type="xsd:boolean" />
+					<element name="listOfTemplateFormatLabelValue" nillable="true"
+						type="impl:ArrayOfTemplateFormatLabelValue" />
+					<element name="templateAvailableLocales" nillable="true"
+						type="impl:ArrayOfString" />
+					<element name="templateBaseLocale" nillable="true" type="xsd:string" />
+					<element name="templateDefaultLocale" nillable="true" type="xsd:string" />
+					<element name="templateDeviceType" nillable="true" type="xsd:string" />
+					<element name="templateID" nillable="true" type="xsd:string" />
+					<element name="templateType" nillable="true" type="xsd:string" />
+					<element name="templateURL" nillable="true" type="xsd:string" />
+					<element name="viewOnline" type="xsd:boolean" />
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfMobileTemplateFormatsLabelValues">
+				<sequence>
+					<element name="item" type="impl:MobileTemplateFormatsLabelValues"
+						minOccurs="0" maxOccurs="unbounded" />
+				</sequence>
+			</complexType>
+			<complexType name="MobileAppDefinition">
+				<sequence>
+					<element name="ESSJobName" nillable="true" type="xsd:string" />
+					<element name="ESSPackageName" nillable="true" type="xsd:string" />
+					<element name="autoRun" type="xsd:boolean" />
+					<element name="cacheDocument" type="xsd:boolean" />
+					<element name="controledByExtApp" type="xsd:boolean" />
+					<element name="dataModelURL" nillable="true" type="xsd:string" />
+					<element name="defaultOutputFormat" nillable="true" type="xsd:string" />
+					<element name="defaultTemplateId" nillable="true" type="xsd:string" />
+					<element name="diagnostics" type="xsd:boolean" />
+					<element name="listOfTemplateFormatsLabelValues" nillable="true"
+						type="impl:ArrayOfMobileTemplateFormatsLabelValues" />
+					<element name="onLine" type="xsd:boolean" />
+					<element name="openLinkInNewWindow" type="xsd:boolean" />
+					<element name="parameterColumns" type="xsd:int" />
+					<element name="parameterNames" nillable="true"
+						type="impl:ArrayOfString" />
+					<element name="reportDefnTitle" nillable="true" type="xsd:string" />
+					<element name="reportDescription" nillable="true" type="xsd:string" />
+					<element name="reportName" nillable="true" type="xsd:string" />
+					<element name="reportParameterNameValues" nillable="true"
+						type="impl:ArrayOfParamNameValue" />
+					<element name="reportType" nillable="true" type="xsd:string" />
+					<element name="showControls" type="xsd:boolean" />
+					<element name="showReportLinks" type="xsd:boolean" />
+					<element name="templateIds" nillable="true" type="impl:ArrayOfString" />
+				</sequence>
+			</complexType>
+			<element name="getMobileAppDefinitionInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getMobileAppDefinitionInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getMobileAppDefinitionInSessionReturn"
+							type="impl:MobileAppDefinition" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportSampleData">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportSampleDataResponse">
+				<complexType>
+					<sequence>
+						<element name="getReportSampleDataReturn" type="xsd:base64Binary" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportSampleDataInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportSampleDataInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getReportSampleDataInSessionReturn" type="xsd:base64Binary" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getXDOSchema">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getXDOSchemaResponse">
+				<complexType>
+					<sequence>
+						<element name="getXDOSchemaReturn" type="xsd:base64Binary" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getXDOSchemaInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getXDOSchemaInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getXDOSchemaInSessionReturn" type="xsd:base64Binary" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateAvailableLocalesInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateID" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateAvailableLocalesInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getTemplateAvailableLocalesInSessionReturn"
+							type="xsd:string" maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateAvailableXLIFFs">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateID" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateAvailableXLIFFsResponse">
+				<complexType>
+					<sequence>
+						<element name="getTemplateAvailableXLIFFsReturn" type="xsd:string"
+							maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateAvailableXLIFFsInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateID" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateAvailableXLIFFsInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getTemplateAvailableXLIFFsInSessionReturn"
+							type="xsd:string" maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateID" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getTemplateInSessionReturn" type="xsd:base64Binary" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportParametersInSession">
+				<complexType>
+					<sequence>
+						<element name="reportRequest" type="impl:ReportRequest" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getReportParametersInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getReportParametersInSessionReturn" type="impl:ParamNameValues" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateParameters">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateID" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateParametersResponse">
+				<complexType>
+					<sequence>
+						<element name="getTemplateParametersReturn" type="impl:ParamNameValue"
+							maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateParametersInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateID" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getTemplateParametersInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getTemplateParametersInSessionReturn" type="impl:ParamNameValue"
+							maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getListOfSubjectArea">
+				<complexType>
+					<sequence>
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+						<element name="connectionName" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getListOfSubjectAreaResponse">
+				<complexType>
+					<sequence>
+						<element name="getListOfSubjectAreaReturn" type="xsd:string"
+							maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getListOfSubjectAreaInSession">
+				<complexType>
+					<sequence>
+						<element name="bipSessionToken" type="xsd:string" />
+						<element name="connectionName" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="getListOfSubjectAreaInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="getListOfSubjectAreaInSessionReturn" type="xsd:string"
+							maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="createReportInSession">
+				<complexType>
+					<sequence>
+						<element name="reportName" type="xsd:string" />
+						<element name="folderAbsolutePathURL" type="xsd:string" />
+						<element name="dataModelURL" type="xsd:string" />
+						<element name="templateFileName" type="xsd:string" />
+						<element name="templateData" type="xsd:base64Binary" />
+						<element name="XLIFFFileName" type="xsd:string" />
+						<element name="XLIFFData" type="xsd:base64Binary" />
+						<element name="updateFlag" type="xsd:boolean" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="createReportInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="createReportInSessionReturn" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateReportDefinition">
+				<complexType>
+					<sequence>
+						<element name="reportAbsPath" type="xsd:string" />
+						<element name="newReportDefn" type="impl:ReportDefinition" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateReportDefinitionResponse">
+				<complexType>
+					<sequence>
+						<element name="updateReportDefinitionReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateMobileAppDefinition">
+				<complexType>
+					<sequence>
+						<element name="reportAbsPath" type="xsd:string" />
+						<element name="newMobileAppDefn" type="impl:MobileAppDefinition" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateMobileAppDefinitionResponse">
+				<complexType>
+					<sequence>
+						<element name="updateMobileAppDefinitionReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateMobileAppDefinitionInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsPath" type="xsd:string" />
+						<element name="newMobileAppDefn" type="impl:MobileAppDefinition" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateMobileAppDefinitionInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="updateMobileAppDefinitionInSessionReturn"
+							type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadTemplateForReport">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateName" type="xsd:string" />
+						<element name="templateType" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="templateData" type="xsd:base64Binary" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadTemplateForReportResponse">
+				<complexType>
+					<sequence>
+						<element name="uploadTemplateForReportReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadTemplateForReportInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateName" type="xsd:string" />
+						<element name="templateType" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="templateData" type="xsd:base64Binary" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadTemplateForReportInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="uploadTemplateForReportInSessionReturn"
+							type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateTemplateForReport">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateName" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="templateData" type="xsd:base64Binary" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateTemplateForReportResponse">
+				<complexType>
+					<sequence>
+						<element name="updateTemplateForReportReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="removeTemplateForReport">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateFileName" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="removeTemplateForReportResponse">
+				<complexType>
+					<sequence>
+						<element name="removeTemplateForReportReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="removeTemplateForReportInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="templateFileName" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="removeTemplateForReportInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="removeTemplateForReportInSessionReturn"
+							type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadXLIFFForReport">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="xliffData" type="xsd:base64Binary" />
+						<element name="layoutFileName" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadXLIFFForReportResponse">
+				<complexType>
+					<sequence>
+						<element name="uploadXLIFFForReportReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateXLIFFForReportInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="xliffData" type="xsd:base64Binary" />
+						<element name="layoutFileName" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateXLIFFForReportInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="updateXLIFFForReportInSessionReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateXLIFFForReport">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="xliffData" type="xsd:base64Binary" />
+						<element name="layoutFileName" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="updateXLIFFForReportResponse">
+				<complexType>
+					<sequence>
+						<element name="updateXLIFFForReportReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadXLIFFForReportInSession">
+				<complexType>
+					<sequence>
+						<element name="reportAbsolutePath" type="xsd:string" />
+						<element name="xliffData" type="xsd:base64Binary" />
+						<element name="layoutFileName" type="xsd:string" />
+						<element name="locale" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadXLIFFForReportInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="uploadXLIFFForReportInSessionReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadReportDataChunk">
+				<complexType>
+					<sequence>
+						<element name="fileID" type="xsd:string" />
+						<element name="reportDataChunk" type="xsd:base64Binary" />
+						<element name="reportRawDataChunk" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadReportDataChunkResponse">
+				<complexType>
+					<sequence>
+						<element name="uploadReportDataChunkReturn" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadReportDataChunkInSession">
+				<complexType>
+					<sequence>
+						<element name="fileID" type="xsd:string" />
+						<element name="reportDataChunk" type="xsd:base64Binary" />
+						<element name="reportRawDataChunk" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="uploadReportDataChunkInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="uploadReportDataChunkInSessionReturn" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="downloadReportDataChunk">
+				<complexType>
+					<sequence>
+						<element name="fileID" type="xsd:string" />
+						<element name="beginIdx" type="xsd:int" />
+						<element name="size" type="xsd:int" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="downloadReportDataChunkResponse">
+				<complexType>
+					<sequence>
+						<element name="downloadReportDataChunkReturn" type="impl:ReportDataChunk" />
+					</sequence>
+				</complexType>
+			</element>
+			<complexType name="ReportDataChunk">
+				<sequence>
+					<element name="reportDataChunk" nillable="true" type="xsd:base64Binary" />
+					<element name="reportDataFileID" nillable="true" type="xsd:string" />
+					<element name="reportDataOffset" type="xsd:long" />
+				</sequence>
+			</complexType>
+			<element name="downloadReportDataChunkInSession">
+				<complexType>
+					<sequence>
+						<element name="fileID" type="xsd:string" />
+						<element name="beginIdx" type="xsd:int" />
+						<element name="size" type="xsd:int" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="downloadReportDataChunkInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="downloadReportDataChunkInSessionReturn"
+							type="impl:ReportDataChunk" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="removeObjectFromCache">
+				<complexType>
+					<sequence>
+						<element name="objectPath" type="xsd:string" />
+						<element name="userID" type="xsd:string" />
+						<element name="password" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="removeObjectFromCacheResponse">
+				<complexType>
+					<sequence>
+						<element name="removeObjectFromCacheReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="removeObjectFromCacheInSession">
+				<complexType>
+					<sequence>
+						<element name="objectPath" type="xsd:string" />
+						<element name="bipSessionToken" type="xsd:string" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="removeObjectFromCacheInSessionResponse">
+				<complexType>
+					<sequence>
+						<element name="removeObjectFromCacheInSessionReturn" type="xsd:boolean" />
+					</sequence>
+				</complexType>
+			</element>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="getReportDefinitionRequest">
+		<wsdl:part name="parameters" element="impl:getReportDefinition" />
+	</wsdl:message>
+	<wsdl:message name="updateMobileAppDefinitionInSessionRequest">
+		<wsdl:part name="parameters" element="impl:updateMobileAppDefinitionInSession" />
+	</wsdl:message>
+	<wsdl:message name="removeTemplateForReportInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:removeTemplateForReportInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getReportSampleDataInSessionResponse">
+		<wsdl:part name="parameters" element="impl:getReportSampleDataInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="runDataModelInSessionResponse">
+		<wsdl:part name="parameters" element="impl:runDataModelInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="createReportRequest">
+		<wsdl:part name="parameters" element="impl:createReport" />
+	</wsdl:message>
+	<wsdl:message name="downloadReportDataChunkResponse">
+		<wsdl:part name="parameters" element="impl:downloadReportDataChunkResponse" />
+	</wsdl:message>
+	<wsdl:message name="createReportInSessionRequest">
+		<wsdl:part name="parameters" element="impl:createReportInSession" />
+	</wsdl:message>
+	<wsdl:message name="getListOfSubjectAreaResponse">
+		<wsdl:part name="parameters" element="impl:getListOfSubjectAreaResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateTemplateForReportInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:updateTemplateForReportInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getReportParametersRequest">
+		<wsdl:part name="parameters" element="impl:getReportParameters" />
+	</wsdl:message>
+	<wsdl:message name="InvalidParametersException">
+		<wsdl:part name="fault" element="impl:fault2" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateRequest">
+		<wsdl:part name="parameters" element="impl:getTemplate" />
+	</wsdl:message>
+	<wsdl:message name="uploadReportDataChunkInSessionRequest">
+		<wsdl:part name="parameters" element="impl:uploadReportDataChunkInSession" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateAvailableLocalesRequest">
+		<wsdl:part name="parameters" element="impl:getTemplateAvailableLocales" />
+	</wsdl:message>
+	<wsdl:message name="getListOfSubjectAreaInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getListOfSubjectAreaInSession" />
+	</wsdl:message>
+	<wsdl:message name="updateXLIFFForReportRequest">
+		<wsdl:part name="parameters" element="impl:updateXLIFFForReport" />
+	</wsdl:message>
+	<wsdl:message name="updateMobileAppDefinitionInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:updateMobileAppDefinitionInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateResponse">
+		<wsdl:part name="parameters" element="impl:getTemplateResponse" />
+	</wsdl:message>
+	<wsdl:message name="getReportParametersInSessionResponse">
+		<wsdl:part name="parameters" element="impl:getReportParametersInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getMobileAppDefinitionRequest">
+		<wsdl:part name="parameters" element="impl:getMobileAppDefinition" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateAvailableXLIFFsInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getTemplateAvailableXLIFFsInSession" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateInSessionResponse">
+		<wsdl:part name="parameters" element="impl:getTemplateInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="uploadXLIFFForReportRequest">
+		<wsdl:part name="parameters" element="impl:uploadXLIFFForReport" />
+	</wsdl:message>
+	<wsdl:message name="createReportInSessionResponse">
+		<wsdl:part name="parameters" element="impl:createReportInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateParametersInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getTemplateParametersInSession" />
+	</wsdl:message>
+	<wsdl:message name="getReportDefinitionResponse">
+		<wsdl:part name="parameters" element="impl:getReportDefinitionResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateXLIFFForReportInSessionRequest">
+		<wsdl:part name="parameters" element="impl:updateXLIFFForReportInSession" />
+	</wsdl:message>
+	<wsdl:message name="getReportSampleDataRequest">
+		<wsdl:part name="parameters" element="impl:getReportSampleData" />
+	</wsdl:message>
+	<wsdl:message name="getReportSampleDataResponse">
+		<wsdl:part name="parameters" element="impl:getReportSampleDataResponse" />
+	</wsdl:message>
+	<wsdl:message name="runReportInSessionRequest">
+		<wsdl:part name="parameters" element="impl:runReportInSession" />
+	</wsdl:message>
+	<wsdl:message name="runDataModelRequest">
+		<wsdl:part name="parameters" element="impl:runDataModel" />
+	</wsdl:message>
+	<wsdl:message name="getMobileAppDefinitionInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getMobileAppDefinitionInSession" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateParametersResponse">
+		<wsdl:part name="parameters" element="impl:getTemplateParametersResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateReportDefinitionInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:updateReportDefinitionInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateParametersRequest">
+		<wsdl:part name="parameters" element="impl:getTemplateParameters" />
+	</wsdl:message>
+	<wsdl:message name="uploadXLIFFForReportInSessionRequest">
+		<wsdl:part name="parameters" element="impl:uploadXLIFFForReportInSession" />
+	</wsdl:message>
+	<wsdl:message name="updateReportDefinitionResponse">
+		<wsdl:part name="parameters" element="impl:updateReportDefinitionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getReportSampleDataInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getReportSampleDataInSession" />
+	</wsdl:message>
+	<wsdl:message name="uploadTemplateForReportInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:uploadTemplateForReportInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateMobileAppDefinitionResponse">
+		<wsdl:part name="parameters" element="impl:updateMobileAppDefinitionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateAvailableLocalesInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getTemplateAvailableLocalesInSession" />
+	</wsdl:message>
+	<wsdl:message name="getReportParametersInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getReportParametersInSession" />
+	</wsdl:message>
+	<wsdl:message name="createReportResponse">
+		<wsdl:part name="parameters" element="impl:createReportResponse" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateAvailableXLIFFsInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:getTemplateAvailableXLIFFsInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="removeTemplateForReportResponse">
+		<wsdl:part name="parameters" element="impl:removeTemplateForReportResponse" />
+	</wsdl:message>
+	<wsdl:message name="getXDOSchemaResponse">
+		<wsdl:part name="parameters" element="impl:getXDOSchemaResponse" />
+	</wsdl:message>
+	<wsdl:message name="uploadReportDataChunkResponse">
+		<wsdl:part name="parameters" element="impl:uploadReportDataChunkResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateTemplateForReportResponse">
+		<wsdl:part name="parameters" element="impl:updateTemplateForReportResponse" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getTemplateInSession" />
+	</wsdl:message>
+	<wsdl:message name="getListOfSubjectAreaInSessionResponse">
+		<wsdl:part name="parameters" element="impl:getListOfSubjectAreaInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="uploadXLIFFForReportResponse">
+		<wsdl:part name="parameters" element="impl:uploadXLIFFForReportResponse" />
+	</wsdl:message>
+	<wsdl:message name="runReportRequest">
+		<wsdl:part name="parameters" element="impl:runReport" />
+	</wsdl:message>
+	<wsdl:message name="getXDOSchemaRequest">
+		<wsdl:part name="parameters" element="impl:getXDOSchema" />
+	</wsdl:message>
+	<wsdl:message name="updateTemplateForReportRequest">
+		<wsdl:part name="parameters" element="impl:updateTemplateForReport" />
+	</wsdl:message>
+	<wsdl:message name="getXDOSchemaInSessionResponse">
+		<wsdl:part name="parameters" element="impl:getXDOSchemaInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateXLIFFForReportInSessionResponse">
+		<wsdl:part name="parameters" element="impl:updateXLIFFForReportInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getXDOSchemaInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getXDOSchemaInSession" />
+	</wsdl:message>
+	<wsdl:message name="updateReportDefinitionInSessionRequest">
+		<wsdl:part name="parameters" element="impl:updateReportDefinitionInSession" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateAvailableXLIFFsRequest">
+		<wsdl:part name="parameters" element="impl:getTemplateAvailableXLIFFs" />
+	</wsdl:message>
+	<wsdl:message name="downloadReportDataChunkInSessionRequest">
+		<wsdl:part name="parameters" element="impl:downloadReportDataChunkInSession" />
+	</wsdl:message>
+	<wsdl:message name="uploadReportDataChunkInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:uploadReportDataChunkInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateXLIFFForReportResponse">
+		<wsdl:part name="parameters" element="impl:updateXLIFFForReportResponse" />
+	</wsdl:message>
+	<wsdl:message name="runReportInSessionResponse">
+		<wsdl:part name="parameters" element="impl:runReportInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getReportParametersResponse">
+		<wsdl:part name="parameters" element="impl:getReportParametersResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateMobileAppDefinitionRequest">
+		<wsdl:part name="parameters" element="impl:updateMobileAppDefinition" />
+	</wsdl:message>
+	<wsdl:message name="getMobileAppDefinitionResponse">
+		<wsdl:part name="parameters" element="impl:getMobileAppDefinitionResponse" />
+	</wsdl:message>
+	<wsdl:message name="removeTemplateForReportInSessionRequest">
+		<wsdl:part name="parameters" element="impl:removeTemplateForReportInSession" />
+	</wsdl:message>
+	<wsdl:message name="runReportResponse">
+		<wsdl:part name="parameters" element="impl:runReportResponse" />
+	</wsdl:message>
+	<wsdl:message name="getReportDefinitionInSessionRequest">
+		<wsdl:part name="parameters" element="impl:getReportDefinitionInSession" />
+	</wsdl:message>
+	<wsdl:message name="runDataModelResponse">
+		<wsdl:part name="parameters" element="impl:runDataModelResponse" />
+	</wsdl:message>
+	<wsdl:message name="removeTemplateForReportRequest">
+		<wsdl:part name="parameters" element="impl:removeTemplateForReport" />
+	</wsdl:message>
+	<wsdl:message name="runDataModelInSessionRequest">
+		<wsdl:part name="parameters" element="impl:runDataModelInSession" />
+	</wsdl:message>
+	<wsdl:message name="getMobileAppDefinitionInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:getMobileAppDefinitionInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="uploadTemplateForReportRequest">
+		<wsdl:part name="parameters" element="impl:uploadTemplateForReport" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateAvailableXLIFFsResponse">
+		<wsdl:part name="parameters" element="impl:getTemplateAvailableXLIFFsResponse" />
+	</wsdl:message>
+	<wsdl:message name="removeObjectFromCacheInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:removeObjectFromCacheInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="removeObjectFromCacheResponse">
+		<wsdl:part name="parameters" element="impl:removeObjectFromCacheResponse" />
+	</wsdl:message>
+	<wsdl:message name="removeObjectFromCacheInSessionRequest">
+		<wsdl:part name="parameters" element="impl:removeObjectFromCacheInSession" />
+	</wsdl:message>
+	<wsdl:message name="removeObjectFromCacheRequest">
+		<wsdl:part name="parameters" element="impl:removeObjectFromCache" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateParametersInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:getTemplateParametersInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="downloadReportDataChunkRequest">
+		<wsdl:part name="parameters" element="impl:downloadReportDataChunk" />
+	</wsdl:message>
+	<wsdl:message name="OperationFailedException">
+		<wsdl:part name="fault" element="impl:fault1" />
+	</wsdl:message>
+	<wsdl:message name="AccessDeniedException">
+		<wsdl:part name="fault" element="impl:fault" />
+	</wsdl:message>
+	<wsdl:message name="downloadReportDataChunkInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:downloadReportDataChunkInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateTemplateForReportInSessionRequest">
+		<wsdl:part name="parameters" element="impl:updateTemplateForReportInSession" />
+	</wsdl:message>
+	<wsdl:message name="uploadXLIFFForReportInSessionResponse">
+		<wsdl:part name="parameters" element="impl:uploadXLIFFForReportInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="uploadTemplateForReportResponse">
+		<wsdl:part name="parameters" element="impl:uploadTemplateForReportResponse" />
+	</wsdl:message>
+	<wsdl:message name="updateReportDefinitionRequest">
+		<wsdl:part name="parameters" element="impl:updateReportDefinition" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateAvailableLocalesResponse">
+		<wsdl:part name="parameters" element="impl:getTemplateAvailableLocalesResponse" />
+	</wsdl:message>
+	<wsdl:message name="uploadTemplateForReportInSessionRequest">
+		<wsdl:part name="parameters" element="impl:uploadTemplateForReportInSession" />
+	</wsdl:message>
+	<wsdl:message name="getTemplateAvailableLocalesInSessionResponse">
+		<wsdl:part name="parameters"
+			element="impl:getTemplateAvailableLocalesInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="uploadReportDataChunkRequest">
+		<wsdl:part name="parameters" element="impl:uploadReportDataChunk" />
+	</wsdl:message>
+	<wsdl:message name="getReportDefinitionInSessionResponse">
+		<wsdl:part name="parameters" element="impl:getReportDefinitionInSessionResponse" />
+	</wsdl:message>
+	<wsdl:message name="getListOfSubjectAreaRequest">
+		<wsdl:part name="parameters" element="impl:getListOfSubjectArea" />
+	</wsdl:message>
+	<wsdl:portType name="ReportService">
+		<wsdl:operation name="getTemplate">
+			<wsdl:input name="getTemplateRequest" message="impl:getTemplateRequest" />
+			<wsdl:output name="getTemplateResponse" message="impl:getTemplateResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="createReport">
+			<wsdl:input name="createReportRequest" message="impl:createReportRequest" />
+			<wsdl:output name="createReportResponse" message="impl:createReportResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getReportDefinitionInSession">
+			<wsdl:input name="getReportDefinitionInSessionRequest"
+				message="impl:getReportDefinitionInSessionRequest" />
+			<wsdl:output name="getReportDefinitionInSessionResponse"
+				message="impl:getReportDefinitionInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="updateReportDefinitionInSession">
+			<wsdl:input name="updateReportDefinitionInSessionRequest"
+				message="impl:updateReportDefinitionInSessionRequest" />
+			<wsdl:output name="updateReportDefinitionInSessionResponse"
+				message="impl:updateReportDefinitionInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="removeObjectFromCacheInSession">
+			<wsdl:input name="removeObjectFromCacheInSessionRequest"
+				message="impl:removeObjectFromCacheInSessionRequest" />
+			<wsdl:output name="removeObjectFromCacheInSessionResponse"
+				message="impl:removeObjectFromCacheInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="updateTemplateForReportInSession">
+			<wsdl:input name="updateTemplateForReportInSessionRequest"
+				message="impl:updateTemplateForReportInSessionRequest" />
+			<wsdl:output name="updateTemplateForReportInSessionResponse"
+				message="impl:updateTemplateForReportInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getReportParameters">
+			<wsdl:input name="getReportParametersRequest" message="impl:getReportParametersRequest" />
+			<wsdl:output name="getReportParametersResponse" message="impl:getReportParametersResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="runReport">
+			<wsdl:input name="runReportRequest" message="impl:runReportRequest" />
+			<wsdl:output name="runReportResponse" message="impl:runReportResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateAvailableLocales">
+			<wsdl:input name="getTemplateAvailableLocalesRequest"
+				message="impl:getTemplateAvailableLocalesRequest" />
+			<wsdl:output name="getTemplateAvailableLocalesResponse"
+				message="impl:getTemplateAvailableLocalesResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="runReportInSession">
+			<wsdl:input name="runReportInSessionRequest" message="impl:runReportInSessionRequest" />
+			<wsdl:output name="runReportInSessionResponse" message="impl:runReportInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="runDataModel">
+			<wsdl:input name="runDataModelRequest" message="impl:runDataModelRequest" />
+			<wsdl:output name="runDataModelResponse" message="impl:runDataModelResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="runDataModelInSession">
+			<wsdl:input name="runDataModelInSessionRequest" message="impl:runDataModelInSessionRequest" />
+			<wsdl:output name="runDataModelInSessionResponse"
+				message="impl:runDataModelInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getReportDefinition">
+			<wsdl:input name="getReportDefinitionRequest" message="impl:getReportDefinitionRequest" />
+			<wsdl:output name="getReportDefinitionResponse" message="impl:getReportDefinitionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getMobileAppDefinition">
+			<wsdl:input name="getMobileAppDefinitionRequest" message="impl:getMobileAppDefinitionRequest" />
+			<wsdl:output name="getMobileAppDefinitionResponse"
+				message="impl:getMobileAppDefinitionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getMobileAppDefinitionInSession">
+			<wsdl:input name="getMobileAppDefinitionInSessionRequest"
+				message="impl:getMobileAppDefinitionInSessionRequest" />
+			<wsdl:output name="getMobileAppDefinitionInSessionResponse"
+				message="impl:getMobileAppDefinitionInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getReportSampleData">
+			<wsdl:input name="getReportSampleDataRequest" message="impl:getReportSampleDataRequest" />
+			<wsdl:output name="getReportSampleDataResponse" message="impl:getReportSampleDataResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getReportSampleDataInSession">
+			<wsdl:input name="getReportSampleDataInSessionRequest"
+				message="impl:getReportSampleDataInSessionRequest" />
+			<wsdl:output name="getReportSampleDataInSessionResponse"
+				message="impl:getReportSampleDataInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getXDOSchema">
+			<wsdl:input name="getXDOSchemaRequest" message="impl:getXDOSchemaRequest" />
+			<wsdl:output name="getXDOSchemaResponse" message="impl:getXDOSchemaResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getXDOSchemaInSession">
+			<wsdl:input name="getXDOSchemaInSessionRequest" message="impl:getXDOSchemaInSessionRequest" />
+			<wsdl:output name="getXDOSchemaInSessionResponse"
+				message="impl:getXDOSchemaInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateAvailableLocalesInSession">
+			<wsdl:input name="getTemplateAvailableLocalesInSessionRequest"
+				message="impl:getTemplateAvailableLocalesInSessionRequest" />
+			<wsdl:output name="getTemplateAvailableLocalesInSessionResponse"
+				message="impl:getTemplateAvailableLocalesInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateAvailableXLIFFs">
+			<wsdl:input name="getTemplateAvailableXLIFFsRequest"
+				message="impl:getTemplateAvailableXLIFFsRequest" />
+			<wsdl:output name="getTemplateAvailableXLIFFsResponse"
+				message="impl:getTemplateAvailableXLIFFsResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateAvailableXLIFFsInSession">
+			<wsdl:input name="getTemplateAvailableXLIFFsInSessionRequest"
+				message="impl:getTemplateAvailableXLIFFsInSessionRequest" />
+			<wsdl:output name="getTemplateAvailableXLIFFsInSessionResponse"
+				message="impl:getTemplateAvailableXLIFFsInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateInSession">
+			<wsdl:input name="getTemplateInSessionRequest" message="impl:getTemplateInSessionRequest" />
+			<wsdl:output name="getTemplateInSessionResponse" message="impl:getTemplateInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getReportParametersInSession">
+			<wsdl:input name="getReportParametersInSessionRequest"
+				message="impl:getReportParametersInSessionRequest" />
+			<wsdl:output name="getReportParametersInSessionResponse"
+				message="impl:getReportParametersInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateParameters">
+			<wsdl:input name="getTemplateParametersRequest" message="impl:getTemplateParametersRequest" />
+			<wsdl:output name="getTemplateParametersResponse"
+				message="impl:getTemplateParametersResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateParametersInSession">
+			<wsdl:input name="getTemplateParametersInSessionRequest"
+				message="impl:getTemplateParametersInSessionRequest" />
+			<wsdl:output name="getTemplateParametersInSessionResponse"
+				message="impl:getTemplateParametersInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getListOfSubjectArea">
+			<wsdl:input name="getListOfSubjectAreaRequest" message="impl:getListOfSubjectAreaRequest" />
+			<wsdl:output name="getListOfSubjectAreaResponse" message="impl:getListOfSubjectAreaResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="getListOfSubjectAreaInSession">
+			<wsdl:input name="getListOfSubjectAreaInSessionRequest"
+				message="impl:getListOfSubjectAreaInSessionRequest" />
+			<wsdl:output name="getListOfSubjectAreaInSessionResponse"
+				message="impl:getListOfSubjectAreaInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="createReportInSession">
+			<wsdl:input name="createReportInSessionRequest" message="impl:createReportInSessionRequest" />
+			<wsdl:output name="createReportInSessionResponse"
+				message="impl:createReportInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="updateReportDefinition">
+			<wsdl:input name="updateReportDefinitionRequest" message="impl:updateReportDefinitionRequest" />
+			<wsdl:output name="updateReportDefinitionResponse"
+				message="impl:updateReportDefinitionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="removeObjectFromCache">
+			<wsdl:input name="removeObjectFromCacheRequest" message="impl:removeObjectFromCacheRequest" />
+			<wsdl:output name="removeObjectFromCacheResponse"
+				message="impl:removeObjectFromCacheResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="updateMobileAppDefinition">
+			<wsdl:input name="updateMobileAppDefinitionRequest"
+				message="impl:updateMobileAppDefinitionRequest" />
+			<wsdl:output name="updateMobileAppDefinitionResponse"
+				message="impl:updateMobileAppDefinitionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="updateMobileAppDefinitionInSession">
+			<wsdl:input name="updateMobileAppDefinitionInSessionRequest"
+				message="impl:updateMobileAppDefinitionInSessionRequest" />
+			<wsdl:output name="updateMobileAppDefinitionInSessionResponse"
+				message="impl:updateMobileAppDefinitionInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="uploadTemplateForReport">
+			<wsdl:input name="uploadTemplateForReportRequest" message="impl:uploadTemplateForReportRequest" />
+			<wsdl:output name="uploadTemplateForReportResponse"
+				message="impl:uploadTemplateForReportResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="uploadTemplateForReportInSession">
+			<wsdl:input name="uploadTemplateForReportInSessionRequest"
+				message="impl:uploadTemplateForReportInSessionRequest" />
+			<wsdl:output name="uploadTemplateForReportInSessionResponse"
+				message="impl:uploadTemplateForReportInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="updateTemplateForReport">
+			<wsdl:input name="updateTemplateForReportRequest" message="impl:updateTemplateForReportRequest" />
+			<wsdl:output name="updateTemplateForReportResponse"
+				message="impl:updateTemplateForReportResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="removeTemplateForReport">
+			<wsdl:input name="removeTemplateForReportRequest" message="impl:removeTemplateForReportRequest" />
+			<wsdl:output name="removeTemplateForReportResponse"
+				message="impl:removeTemplateForReportResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="removeTemplateForReportInSession">
+			<wsdl:input name="removeTemplateForReportInSessionRequest"
+				message="impl:removeTemplateForReportInSessionRequest" />
+			<wsdl:output name="removeTemplateForReportInSessionResponse"
+				message="impl:removeTemplateForReportInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="uploadXLIFFForReport">
+			<wsdl:input name="uploadXLIFFForReportRequest" message="impl:uploadXLIFFForReportRequest" />
+			<wsdl:output name="uploadXLIFFForReportResponse" message="impl:uploadXLIFFForReportResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="updateXLIFFForReportInSession">
+			<wsdl:input name="updateXLIFFForReportInSessionRequest"
+				message="impl:updateXLIFFForReportInSessionRequest" />
+			<wsdl:output name="updateXLIFFForReportInSessionResponse"
+				message="impl:updateXLIFFForReportInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="updateXLIFFForReport">
+			<wsdl:input name="updateXLIFFForReportRequest" message="impl:updateXLIFFForReportRequest" />
+			<wsdl:output name="updateXLIFFForReportResponse" message="impl:updateXLIFFForReportResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="uploadXLIFFForReportInSession">
+			<wsdl:input name="uploadXLIFFForReportInSessionRequest"
+				message="impl:uploadXLIFFForReportInSessionRequest" />
+			<wsdl:output name="uploadXLIFFForReportInSessionResponse"
+				message="impl:uploadXLIFFForReportInSessionResponse" />
+			<wsdl:fault name="InvalidParametersException" message="impl:InvalidParametersException" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="uploadReportDataChunk">
+			<wsdl:input name="uploadReportDataChunkRequest" message="impl:uploadReportDataChunkRequest" />
+			<wsdl:output name="uploadReportDataChunkResponse"
+				message="impl:uploadReportDataChunkResponse" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="uploadReportDataChunkInSession">
+			<wsdl:input name="uploadReportDataChunkInSessionRequest"
+				message="impl:uploadReportDataChunkInSessionRequest" />
+			<wsdl:output name="uploadReportDataChunkInSessionResponse"
+				message="impl:uploadReportDataChunkInSessionResponse" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="downloadReportDataChunk">
+			<wsdl:input name="downloadReportDataChunkRequest" message="impl:downloadReportDataChunkRequest" />
+			<wsdl:output name="downloadReportDataChunkResponse"
+				message="impl:downloadReportDataChunkResponse" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+		<wsdl:operation name="downloadReportDataChunkInSession">
+			<wsdl:input name="downloadReportDataChunkInSessionRequest"
+				message="impl:downloadReportDataChunkInSessionRequest" />
+			<wsdl:output name="downloadReportDataChunkInSessionResponse"
+				message="impl:downloadReportDataChunkInSessionResponse" />
+			<wsdl:fault name="AccessDeniedException" message="impl:AccessDeniedException" />
+			<wsdl:fault name="OperationFailedException" message="impl:OperationFailedException" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ReportServiceSoapBinding" type="impl:ReportService">
+		<wsdlsoap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getTemplate">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getTemplateRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getTemplateResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createReport">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="createReportRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="createReportResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getReportDefinitionInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getReportDefinitionInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getReportDefinitionInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateReportDefinitionInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="updateReportDefinitionInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateReportDefinitionInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeObjectFromCacheInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="removeObjectFromCacheInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="removeObjectFromCacheInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTemplateForReportInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="updateTemplateForReportInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateTemplateForReportInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getReportParameters">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getReportParametersRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getReportParametersResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="runReport">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="runReportRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="runReportResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateAvailableLocales">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getTemplateAvailableLocalesRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getTemplateAvailableLocalesResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="runReportInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="runReportInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="runReportInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="runDataModel">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="runDataModelRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="runDataModelResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="runDataModelInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="runDataModelInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="runDataModelInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getReportDefinition">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getReportDefinitionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getReportDefinitionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getMobileAppDefinition">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getMobileAppDefinitionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getMobileAppDefinitionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getMobileAppDefinitionInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getMobileAppDefinitionInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getMobileAppDefinitionInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getReportSampleData">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getReportSampleDataRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getReportSampleDataResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getReportSampleDataInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getReportSampleDataInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getReportSampleDataInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getXDOSchema">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getXDOSchemaRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getXDOSchemaResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getXDOSchemaInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getXDOSchemaInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getXDOSchemaInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateAvailableLocalesInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getTemplateAvailableLocalesInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getTemplateAvailableLocalesInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateAvailableXLIFFs">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getTemplateAvailableXLIFFsRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getTemplateAvailableXLIFFsResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateAvailableXLIFFsInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getTemplateAvailableXLIFFsInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getTemplateAvailableXLIFFsInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getTemplateInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getTemplateInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getReportParametersInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getReportParametersInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getReportParametersInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateParameters">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getTemplateParametersRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getTemplateParametersResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTemplateParametersInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getTemplateParametersInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getTemplateParametersInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getListOfSubjectArea">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getListOfSubjectAreaRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getListOfSubjectAreaResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getListOfSubjectAreaInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="getListOfSubjectAreaInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="getListOfSubjectAreaInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createReportInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="createReportInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="createReportInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateReportDefinition">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="updateReportDefinitionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateReportDefinitionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeObjectFromCache">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="removeObjectFromCacheRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="removeObjectFromCacheResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateMobileAppDefinition">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="updateMobileAppDefinitionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateMobileAppDefinitionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateMobileAppDefinitionInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="updateMobileAppDefinitionInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateMobileAppDefinitionInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="uploadTemplateForReport">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="uploadTemplateForReportRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="uploadTemplateForReportResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="uploadTemplateForReportInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="uploadTemplateForReportInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="uploadTemplateForReportInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTemplateForReport">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="updateTemplateForReportRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateTemplateForReportResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeTemplateForReport">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="removeTemplateForReportRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="removeTemplateForReportResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="removeTemplateForReportInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="removeTemplateForReportInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="removeTemplateForReportInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="uploadXLIFFForReport">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="uploadXLIFFForReportRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="uploadXLIFFForReportResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateXLIFFForReportInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="updateXLIFFForReportInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateXLIFFForReportInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateXLIFFForReport">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="updateXLIFFForReportRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="updateXLIFFForReportResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="uploadXLIFFForReportInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="uploadXLIFFForReportInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="uploadXLIFFForReportInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="InvalidParametersException">
+				<wsdlsoap:fault name="InvalidParametersException"
+					use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="uploadReportDataChunk">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="uploadReportDataChunkRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="uploadReportDataChunkResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="uploadReportDataChunkInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="uploadReportDataChunkInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="uploadReportDataChunkInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="downloadReportDataChunk">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="downloadReportDataChunkRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="downloadReportDataChunkResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="downloadReportDataChunkInSession">
+			<wsdlsoap:operation soapAction="" />
+			<wsdl:input name="downloadReportDataChunkInSessionRequest">
+				<wsdlsoap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="downloadReportDataChunkInSessionResponse">
+				<wsdlsoap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="AccessDeniedException">
+				<wsdlsoap:fault name="AccessDeniedException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="OperationFailedException">
+				<wsdlsoap:fault name="OperationFailedException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ReportService">
+		<wsdl:port name="ReportService" binding="impl:ReportServiceSoapBinding">
+			<wsdlsoap:address
+				location="https://otmoacbi-devasankar.analytics.ocp.oraclecloud.com/xmlpserver/services/v2/ReportService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
