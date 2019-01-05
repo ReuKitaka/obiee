@@ -1,4 +1,4 @@
-package com.obitp;
+package com.bip.report.consumer;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,17 +12,17 @@ import com.oracle.xmlns.oxp.service.v2.ReportRequest;
 import com.oracle.xmlns.oxp.service.v2.ReportResponse;
 import com.oracle.xmlns.oxp.service.v2.ReportService;
 
-public class ObieeReportGenerator {
+public class BiPulisherReportConsumer {
 	
-	private static String SERVICE_URL = "https://otmgtm-cccb.otm.us2.oraclecloud.com/xmlpserver/services/v2/ReportService";
+	private static String SERVICE_URL = "https://xxxxxx/xmlpserver/services/v2/ReportService";
 
-	private static String REPORT_PATH = "/OTBIP/BIPReport.xdo";
+	private static String REPORT_PATH = "/xxxx/BIPReport.xdo";
 
-	private static String REPORT_FORMAT = "csv";
+	private static String REPORT_FORMAT = "xxx";
 
-	private static String USERNAME = "SHIPPER.ANIRBAN";
+	private static String USERNAME = "xxxx";
 
-	private static String PASSWORD = "AJan@2018";
+	private static String PASSWORD = "xxxx";
 	
 
 	

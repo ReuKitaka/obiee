@@ -3,6 +3,7 @@ com/oracle/xmlns/oxp/service/v2/RunDataModel.class
 com/oracle/xmlns/oxp/service/v2/GetXDOSchema.class
 com/oracle/xmlns/oxp/service/v2/UpdateReportDefinitionInSessionResponse.class
 com/oracle/xmlns/oxp/service/v2/ArrayOfMobileTemplateFormatsLabelValues.class
+com/bip/report/consumer/BiPulisherReportConsumer.class
 com/oracle/xmlns/oxp/service/v2/GetTemplateAvailableLocalesResponse.class
 com/oracle/xmlns/oxp/service/v2/GetTemplateAvailableXLIFFsResponse.class
 com/oracle/xmlns/oxp/service/v2/GetTemplateAvailableLocales.class
@@ -27,7 +28,6 @@ com/oracle/xmlns/oxp/service/v2/DownloadReportDataChunkResponse.class
 com/oracle/xmlns/oxp/service/v2/GetMobileAppDefinitionInSession.class
 com/oracle/xmlns/oxp/service/v2/CreateReport.class
 com/oracle/xmlns/oxp/service/v2/OperationFailedException.class
-com/obitp/App.class
 com/oracle/xmlns/oxp/service/v2/CreateReportInSession.class
 com/oracle/xmlns/oxp/service/v2/RunReportInSession.class
 com/oracle/xmlns/oxp/service/v2/ArrayOfMetaData.class
