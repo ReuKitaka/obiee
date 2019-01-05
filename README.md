@@ -1,4 +1,13 @@
-# obiee soap report consumer
+# BI Publisher soap report consumer
+
+#PreRequired :
+
+Java
+Apache CXF
+Maven
+Any IDE(Eclipse)
+
+#Setup:
 
 clone 
 mvn clean install
