@@ -13,16 +13,16 @@ import com.oracle.xmlns.oxp.service.v2.ReportResponse;
 import com.oracle.xmlns.oxp.service.v2.ReportService;
 
 public class BiPulisherReportConsumer {
-	
-	private static String SERVICE_URL = "https://otmgtm-cccb.otm.us2.oraclecloud.com/xmlpserver/services/v2/ReportService";
 
-	private static String REPORT_PATH = "/OTBIP/BIPReport.xdo";
+	private static String SERVICE_URL = "https:///xmlpserver/services/v2/ReportService";
+
+	private static String REPORT_PATH = "/xxxxx/BIPReport.xdo";
 
 	private static String REPORT_FORMAT = "csv";
 
-	private static String USERNAME = "SHIPPER.ANIRBAN";
+	private static String USERNAME = "xxxxx";
 
-	private static String PASSWORD = "AJan@2018";
+	private static String PASSWORD = "xxxxx";
 	
 
 	
@@ -41,7 +41,7 @@ public class BiPulisherReportConsumer {
 			reportRequest.setReportAbsolutePath(REPORT_PATH);
 			reportRequest.setAttributeFormat(REPORT_FORMAT);
 			reportRequest.setSizeOfDataChunkDownload(-1);
-			// Anirban_roy04@infosys.com/AJan@2018
+
 			ReportResponse res = runReportResponse.runReport(reportRequest, USERNAME, PASSWORD);
 
 			byte[] data = res.getReportBytes();
